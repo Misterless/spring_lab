@@ -1,0 +1,36 @@
+{{> /layout/header}}
+
+<!-- 컨테이너 시작 -->
+<div class="container mt-3">
+
+    <!-- 회원수정폼 시작 -->
+    <form>
+<!-- 폼태그는 put delete 요청 불가 -->
+        <div class="mb-3 mt-3">
+            <input type="text" class="form-control" value="ssar" id="username">
+        </div>
+        <div class="mb-3">
+            <input type="password" class="form-control" value="1234" id="password">
+        </div>
+        <div class="mb-3 ">
+            <input type="email" class="form-control" value="ssar@nate.com" id="email">
+        </div>
+            </label>
+        </div>
+        <div class="d-grid">
+        <button  type="submit" class="btn btn-info btn-block" onclick="update">수정완료</button>
+    </div>
+    </form>
+    <!-- 회원수정 폼 끝 -->
+
+</div>
+<!-- 컨테이너 끝 -->
+<script>
+    
+    document.querySelector("#id");
+    function update(){
+        let usernameDom = document.querySelector("username");
+    console.log(usernameDom)    
+    }
+    </script>
+{{> /layout/footer}}
