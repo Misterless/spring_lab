@@ -4,19 +4,26 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.UniqueConstraint;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class User { 
 //jpalib Java Persistence API
 //CRUD Method 
@@ -34,7 +41,8 @@ public class User {
     private String password;
     @Column (length=16000000)
     private String email;
-    
+    @CreatedDate//insert
     private LocalDateTime createDate;
-     
+    @LastModifiedDate //insert&update
+    private LocalDateTime updateDate;
 }

@@ -6,18 +6,18 @@
     <!-- 상세정보보기 시작 -->
     
         <div class="mb-3 mt-3">
-            유저네임 위치
+            {{user.username}}
         </div>
         <div class="mb-3">
-            패스워드 위치
+            {{user.password}}
         </div>
         <div class="mb-3 ">
-            이메일 위치
+            {{user.email}}
         </div>
             </label>
         </div>
         <div>
-        <a href="/user/1/updateForm" class="btn btn-info">수정페이지로</button>
+        <a href="/user/{{user.id}}/updateForm" class="btn btn-info">수정페이지로</button>
     </div>
     
     <!-- 상세정보보기 -->
