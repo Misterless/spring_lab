@@ -1,0 +1,44 @@
+{{>/layout/header}}
+<div class="container mt-3">
+    <h1>부산사하구 PCR가능병원</h1>
+
+     <div class="table-responsive mt-3">
+      <table class="table table-bordered table-sm h6">
+        <thead>
+          <tr>
+            <th>NO.</th>
+            <th>의료기관 주소</th>
+            <th>운영시작일자</th>
+            <th>PCR가능여부</th>
+            <th>신속항원검사 가능여부</th>
+            <th>요양종별코드</th>
+            <th>시군구명</th>
+            <th>시도명</th>
+            <th>요양기관명</th>
+          </tr>
+        </thead>
+        <tbody>
+         {{#hospitals}}
+          <tr>
+            {{#no}}<td>{{no}}</td>{{/no}}
+            {{#addr}}<td>{{addr}}</td>{{/addr}}
+            {{#mgtStaDd}}<td>{{mgtStaDd}}</td>{{/mgtStaDd}}
+            {{#pcrPsblYn}}<td>{{pcrPsblYn}}</td>{{/pcrPsblYn}}
+            {{#ratPsblYn}}<td>{{ratPsblYn}}</td>{{/ratPsblYn}}
+            {{#recuClCd}}<td>{{recuClCd}}</td>{{/recuClCd}}
+            {{#sgguCdNm}}<td>{{sgguCdNm}}</td>{{/sgguCdNm}}
+            {{#sidoCdNm}}<td>{{sidoCdNm}}</td>{{/sidoCdNm}}
+            {{#yadmNm}}<td>{{yadmNm}}</td>{{/yadmNm}}
+            {{#xposWgs84}}<td>{{xposWgs84}}</td>{{/xposWgs84}}
+            {{#yposWgs84}}<td>{{yposWgs84}}</td>{{/yposWgs84}}
+            {{#xpos}}<td>{{xpos}}</td>{{/xpos}}
+            {{#ypos}}<td>{{ypos}}</td>{{/ypos}}
+          </tr>
+          {{/hospitals}}
+        </tbody>
+      </table>
+    </div>
+   </div>
+     <hr/>
+
+     {{>/layout/footer}}

@@ -1,7 +1,10 @@
 package site.metacoding.dbproject.web;
 
+import java.util.Optional;
+
 import java.sql.PreparedStatement;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import site.metacoding.dbproject.domain.user.User;
 import site.metacoding.dbproject.domain.user.UserRepository;
@@ -36,7 +40,22 @@ public class UserController {
     // username=ssar&password=1234&email=ssar@nate.com (x-www-form)
     // 회원가입 - 로그인X
     @PostMapping("/join")
-    public String join(User user) {
+    public @ResponseBody String join(User user) {
+
+        StringBuffer sb= new StringBuffer();
+        sb.append("<script>");
+        sb.append("alert('값을 제대로 전달받지 못했습니다.')");
+        sb.append("history.back();");
+        sb.append("</script>");
+        
+        //1,null -> 공백체크
+        if(user.getUsername()==null || user.getPassword()==null || user.getEmail()==null){
+            return sb.toString();
+        }
+        if(user.getUsername().equals("") || user.getPassword().equals("") || user.getEmail().equals("")){
+            return sb.toString();
+        }
+
         System.out.println("user : " + user);
         User userEntity = userRepository.save(user);
         System.out.println("userEntity : " + userEntity);
@@ -52,6 +71,16 @@ public class UserController {
     // 로그인페이지 - login x
     @GetMapping("/loginForm")
     public String loginForm() {
+    public String loginForm(HttpServletRequest request, Model model) {
+        // request.getHeader("Cookie");
+        Cookie[] cookies = request.getCookies(); // jS
+        for (Cookie cookie : cookies) {
+            System.out.println("쿠키값 : " + cookie.getName());
+            if (cookie.getName().equals("remember")) {
+                model.addAttribute("remember", cookie.getValue());
+            }
+        }
+    
         return "user/loginForm";
     }
     // SELECT * FROM user WHERE username =? AND password=?
@@ -125,7 +154,9 @@ public class UserController {
     // 로그아웃 login o
     @GetMapping("logout")
     public String logout() {
-        return "메인페이지 돌려주자"; // postcontroller 만들고 수정
+        session.invalidate();
+        
+        return "redirect:/loginForm"; // postcontroller 만들고 수정
     }
 
 }

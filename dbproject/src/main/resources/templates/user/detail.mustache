@@ -4,23 +4,17 @@
 <div class="container mt-3">
 
     <!-- 상세정보보기 시작 -->
-    
-        <div class="mb-3 mt-3">
-            {{user.username}}
-        </div>
-        <div class="mb-3">
-            {{user.password}}
-        </div>
-        <div class="mb-3 ">
-            {{user.email}}
-        </div>
-            </label>
-        </div>
-        <div>
-        <a href="/user/{{user.id}}/updateForm" class="btn btn-info">수정페이지로</button>
+    <div class="mb-3">
+        작성자 : {{post.user.username}}
     </div>
-    
-    <!-- 상세정보보기 -->
+    <div class="mb-3 mt-3">
+        {{post.title}}
+    </div>
+    <div class="mb-3">
+        {{post.content}}
+    </div>
+    <a href="/s/post/{{post.id}}/updateForm" class="btn btn-dark">수정 페이지이동</a>
+    <!-- 상세정보보기 끝 -->
 
 </div>
 <!-- 컨테이너 끝 -->

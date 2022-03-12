@@ -8,6 +8,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -39,10 +40,13 @@ public class User {
     private String username; //id
     @Column(length=12, nullable =  false)
     private String password;
-    @Column (length=16000000)
+    @Column (length=16000000,  nullable= false)
     private String email;
     @CreatedDate//insert
     private LocalDateTime createDate;
     @LastModifiedDate //insert&update
     private LocalDateTime updateDate;
+
+    @Transient
+    private String remember;
 }

@@ -24,3 +24,13 @@
 <!-- 컨테이너 끝 -->
 {{>/layout/footer}}
 
+<script>
+  var blank_pattern = /[\s]/g;
+if( blank_pattern.test(str) == true){
+    alert('공백이 입력되었습니다.');
+}
+var blank_pattern = /^\s+|\s+$/g;
+if(str.replace(blank_pattern, '' ) == "" ){
+    alert('공백만 입력되었습니다.');
+}
+</script>
