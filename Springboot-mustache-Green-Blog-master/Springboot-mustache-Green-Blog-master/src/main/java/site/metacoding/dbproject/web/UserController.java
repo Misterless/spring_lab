@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import site.metacoding.dbproject.domain.user.User;
 import site.metacoding.dbproject.domain.user.UserRepository;
+import site.metacoding.dbproject.web.dto.responseDto;
 
 @Controller
 public class UserController {
@@ -30,6 +31,19 @@ public class UserController {
         this.userRepository = userRepository;
         this.session = session;
     }
+//uesr의 username이 동일한지? - 응답은  json 무조건
+    @GetMapping("/api/user/username/same-check")
+    public @ResponseBody responseDto<String> sameCheck(String username){
+        User userEntity = userRepository.mUsernameSameCheck(username);
+
+        if (userEntity==null){
+            return new ResponseDto<String>(1,"성공","있어");
+        }
+        
+        return new responseDto<User>(1,"통신성공", new User(1,"ssar","1234","ssar@nate.com",null,null,null);
+    }
+
+
 
     // 회원가입 페이지 (정적) - 로그인X
     @GetMapping("/joinForm")
